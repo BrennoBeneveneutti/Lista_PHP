@@ -1,11 +1,21 @@
 <?php
-    if (isset($_POST['usuario'])) {
-        header('Location: login.php');
-        exit();
-    }
-    $_SESSION['usuario'] = 'usuario';
-    $_SESSION['senha'] = 'senha';
+session_start();
 
-    header('Location: home.php');
-    
+$usuarioCorreto = "admin";
+$senhaCorreta = "1234";
+
+if (isset($_POST["usuario"], $_POST["senha"])) {
+    $usuario = $_POST["usuario"];
+    $senha = $_POST["senha"];
+
+    if ($usuario === $usuarioCorreto && $senha === $senhaCorreta) {
+        $_SESSION["usuario"] = $usuario;
+        $_SESSION["senha"] = $senha;
+        header("Location: home.php");
+        exit;
+    }
+}
+
+header("Location: login.php?erro=1");
+exit;
 ?>

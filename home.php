@@ -1,9 +1,19 @@
 <?php
-    session_start();
-    if (!isset($_SESSION['usuario'])) {
-        header('Location: login.php');
-        exit();
-    }
-    echo "Bem-vindo, " . htmlspecialchars($_SESSION['usuario']) . "!<br>";
-    echo "<br>Usuario: " . htmlspecialchars($_SESSION['usuario']) . "<br>";
-    echo "Senha: " . htmlspecialchars($_SESSION['senha']) . "<br>";
+session_start();
+
+if (!isset($_SESSION["usuario"])) {
+    header("Location: login.php");
+    exit;
+}
+?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Página principal</title>
+</head>
+<body>
+    <p>Bem-vindo, <?php echo htmlspecialchars($_SESSION["usuario"]); ?>!</p>
+    <a href="logout.php">Sair</a>
+</body>
+</html>

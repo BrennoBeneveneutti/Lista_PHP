@@ -5,8 +5,7 @@
 <?php
 // As tags usadas para inserir código PHP são <?php e ?>.
 
-$exemplo = "Exemplo de uso do PHP";
-echo $exemplo;
+echo "Hello World";
 ?>
 </body>
 </html>

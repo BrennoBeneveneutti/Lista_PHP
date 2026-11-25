@@ -1,23 +1,40 @@
+<?php
+function randomize($min, $max) {
+    return rand($min, $max);
+}
+
+$min = $_GET['min'] ?? null;
+$max = $_GET['max'] ?? null;
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head><meta charset="UTF-8"><title>Sorteio</title></head>
+<head>
+    <meta charset="UTF-8">
+    <title>Gerar número aleatório</title>
+</head>
 <body>
-<form method="post">
-    <label>Valor mínimo: <input type="number" name="minimo" required></label><br>
-    <label>Valor máximo: <input type="number" name="maximo" required></label><br>
-    <button type="submit">Sortear</button>
-</form>
-<?php
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $minimo = (int) $_POST["minimo"];
-    $maximo = (int) $_POST["maximo"];
+    <form method="get">
+        <label for="min">Mínimo:</label>
+        <input type="number" id="min" name="min" value="<?= htmlspecialchars((string) ($min ?? '')) ?>">
 
-    if ($minimo <= $maximo) {
-        echo "Número sorteado: " . rand($minimo, $maximo);
-    } else {
-        echo "O valor mínimo não pode ser maior que o máximo.";
+        <label for="max">Máximo:</label>
+        <input type="number" id="max" name="max" value="<?= htmlspecialchars((string) ($max ?? '')) ?>">
+
+        <button type="submit">Gerar</button>
+    </form>
+
+    <?php
+    if ($min !== null && $max !== null) {
+        $min = (int) $min;
+        $max = (int) $max;
+
+        if ($min <= $max) {
+            echo "<p>Número gerado: " . randomize($min, $max) . "</p>";
+        } else {
+            echo "<p>O mínimo não pode ser maior que o máximo.</p>";
+        }
     }
-}
-?>
+    ?>
 </body>
 </html>

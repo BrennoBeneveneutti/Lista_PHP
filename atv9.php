@@ -8,7 +8,7 @@
     <button type="submit">Analisar</button>
 </form>
 <?php
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if (isset($_POST["texto"])) {
     $texto = trim($_POST["texto"]);
     $vogais = preg_match_all('/[aeiouáéíóúãõâêîôû]/iu', $texto);
 

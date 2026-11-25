@@ -9,7 +9,7 @@
     <button type="submit">Somar</button>
 </form>
 <?php
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if (isset($_POST["numeros"])) {
     $numeros = str_replace(",", " ", $_POST["numeros"]);
     $lista = array_filter(explode(" ", $numeros), function ($valor) {
         return trim($valor) !== "";

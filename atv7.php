@@ -11,7 +11,7 @@
     <button type="submit">Mostrar tabuada</button>
 </form>
 <?php
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if (isset($_POST["numero"])) {
     $numero = (int) $_POST["numero"];
     echo "Tabuada do $numero:<br>";
 
